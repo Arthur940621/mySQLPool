@@ -40,9 +40,7 @@ void test1() {
 }
 
 void test2() {
-#if 1 // 10442
-    MySQLConn conn;
-    conn.connect("root", "xxx", "testdb", "localhost", 3306);
+#if 0 // 10442
     steady_clock::time_point begin = steady_clock::now();
     thread t1(op1, 0, 1000);
     thread t2(op1, 1000, 2000);
@@ -74,7 +72,6 @@ void test2() {
     steady_clock::time_point end = steady_clock::now();
     auto length = end - begin;
     cout << "It takes " << (length.count() / 1000000) << " ms for a multiple thread to use the connection pool" << endl;
-
 #endif
 }
 

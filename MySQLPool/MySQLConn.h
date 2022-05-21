@@ -18,10 +18,13 @@ public:
     bool transaction(); // 事务操作
     bool commit(); // 事务提交
     bool roollback(); // 事务回滚
-
+    void refresh_alive_time();
+    long long get_alive_time();
+    
 private:
     void freeResult();
     MYSQL* mysql_conn_ = nullptr;
     MYSQL_RES* mysql_res_ = nullptr;
     MYSQL_ROW mysql_row_ = nullptr;
+    std::chrono::steady_clock::time_point alive_time_;
 };

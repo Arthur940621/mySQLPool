@@ -2,8 +2,8 @@
 
 #include <queue>
 #include <mutex>
-#include <condition_variable>
 #include "MySQLConn.h"
+#include <memory>
 
 class ConnectPool {
 public:
@@ -16,14 +16,14 @@ private:
     ~ConnectPool();
     bool parse_json_file();
     void add_connection();
+    void recycle_connection();
     std::string ip_;
     std::string user_;
     std::string passwd_;
     std::string db_name_;
     unsigned short port_;
     int max_conn_;
-    int timeout_;
+    int max_idle_time_;
     std::mutex mtx_;
-    std::condition_variable cond_;
     std::queue<MySQLConn*> mysql_conn_que_;
 };

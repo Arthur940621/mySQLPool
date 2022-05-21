@@ -1,9 +1,9 @@
 {
-    "ip":"xxx",
+    "ip":"localhost",
     "user":"root",
     "passwd":"xxx",
     "db_name":"testdb",
     "port":3306,
-    "max_conn":100,
-    "timeout":500
+    "max_conn":16,
+    "max_idle_time":5000
 }
