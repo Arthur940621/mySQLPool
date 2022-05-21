@@ -1,0 +1,9 @@
+{
+    "ip":"xxx",
+    "user":"root",
+    "passwd":"xxx",
+    "db_name":"testdb",
+    "port":3306,
+    "max_conn":100,
+    "timeout":500
+}
