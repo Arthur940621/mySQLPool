@@ -23,13 +23,13 @@ void op2(ConnectPool* pool, int begin, int end) {
 }
 
 void test1() {
-#if 0 // 34000
+#if 0 // 32503
     steady_clock::time_point begin = steady_clock::now();
     op1(0, 5000);
     steady_clock::time_point end = steady_clock::now();
     auto length = end - begin;
     cout << "It takes " << (length.count() / 1000000) << " ms for a single thread not to use the connection pool" << endl;
-#else // 37329
+#else // 30886
     ConnectPool* pool = ConnectPool::get_connect_pool();
     steady_clock::time_point begin = steady_clock::now();
     op2(pool, 0, 5000);
@@ -40,7 +40,7 @@ void test1() {
 }
 
 void test2() {
-#if 0 // 10442
+#if 0 // 9301
     steady_clock::time_point begin = steady_clock::now();
     thread t1(op1, 0, 1000);
     thread t2(op1, 1000, 2000);
@@ -56,7 +56,7 @@ void test2() {
     auto length = end - begin;
     cout << "It takes " << (length.count() / 1000000) << " ms for a multiple thread not to use the connection pool" << endl;
 
-#else // 9794
+#else // 8132
     ConnectPool* pool = ConnectPool::get_connect_pool();
     steady_clock::time_point begin = steady_clock::now();
     thread t1(op2, pool, 0, 1000);
@@ -76,6 +76,6 @@ void test2() {
 }
 
 int main() {
-    test2();
+    test1();
     return 0;
 }

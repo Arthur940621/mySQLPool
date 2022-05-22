@@ -68,13 +68,3 @@ void MySQLConn::freeResult() {
         mysql_res_ = nullptr;
     }
 }
-
-void MySQLConn::refresh_alive_time() {
-    alive_time_ = std::chrono::steady_clock::now();
-}
-
-long long MySQLConn::get_alive_time() {
-    std::chrono::nanoseconds res = std::chrono::steady_clock::now() - alive_time_;
-    std::chrono::milliseconds millsec = std::chrono::duration_cast<std::chrono::milliseconds>(res);
-    return millsec.count();
-}
