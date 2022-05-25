@@ -29,4 +29,3 @@ std::shared_ptr<MySQLConn> conn = pool->get_connection(); // 从连接池中取�
 string sql = "insert into user_tb values(null, 'xxx', 'xxx')";
 conn->update(sql); // 对连接进行操作
 ```
-
